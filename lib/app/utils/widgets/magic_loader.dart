@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import '../extensions/theme_extensions.dart';
 
 class MagicLoader extends StatelessWidget {
