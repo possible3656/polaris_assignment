@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../generated/assets.gen.dart';
 import '../../../utils/context_utils.dart';
 import '../../../utils/extensions/theme_extensions.dart';
 import '../cubit/home_cubit.dart';
 import 'widgets/home_loading_view.dart';
+import 'widgets/input_form_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -23,9 +23,11 @@ class HomeView extends StatelessWidget {
       body: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           return state.maybeWhen(
-            orElse: () => HomeLoadingView(),
-            initial: () =>
-                Center(child: Image.asset(Assets.images.loading.keyName)),
+            orElse: () => const SizedBox.shrink(),
+            initial: () => const HomeLoadingView(),
+            ready: (inputFormModel) => SingleChildScrollView(
+              child: InputFormView(inputFormModel: inputFormModel),
+            ),
           );
         },
       ),

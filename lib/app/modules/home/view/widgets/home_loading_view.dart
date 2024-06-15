@@ -13,7 +13,7 @@ class HomeLoadingView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            Assets.images.loading.keyName,
+            Assets.images.loading.path,
             width: ContextUtils.size.width * .7,
           ),
           const SizedBox(height: 16),
