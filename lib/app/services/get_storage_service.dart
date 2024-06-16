@@ -43,7 +43,7 @@ class GetStorageService {
     final box = GetStorage();
     List? data = box.read(userInputDataKey);
     List updatedList = [...data ?? []];
-    if (data != null) {
+    if (data != null && data.isNotEmpty) {
       log('Data to upload: $data', name: 'GetStorageService');
       for (var item in data) {
         log('Uploading data: $item', name: 'GetStorageService');
