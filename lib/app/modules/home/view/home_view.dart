@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../utils/context_utils.dart';
 import '../../../utils/extensions/theme_extensions.dart';
+import '../../../utils/widgets/magic_loader.dart';
 import '../cubit/home_cubit.dart';
+import 'widgets/home_error_view.dart';
 import 'widgets/home_loading_view.dart';
 import 'widgets/input_form_view.dart';
 
@@ -28,6 +30,12 @@ class HomeView extends StatelessWidget {
             ready: (inputFormModel) => SingleChildScrollView(
               child: InputFormView(inputFormModel: inputFormModel),
             ),
+            uploadingForm: () => Center(
+              child: MagicLoader(
+                color: ContextUtils.theme.primaryColor,
+              ),
+            ),
+            error: (message) => HomeErrorView(message: message),
           );
         },
       ),

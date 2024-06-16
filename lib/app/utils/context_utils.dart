@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'extensions/theme_extensions.dart';
 
 abstract class ContextUtils {
   static GlobalKey<NavigatorState> navigationKey = GlobalKey<NavigatorState>();
@@ -88,7 +87,7 @@ abstract class ContextUtils {
       SnackBar(
         content: Text(
           text,
-          style: TextStyle(color: theme.primaryTextColor, fontSize: 20),
+          style: theme.textTheme.bodySmall,
         ),
       ),
     );

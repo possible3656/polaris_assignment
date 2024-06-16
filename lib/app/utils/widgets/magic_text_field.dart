@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../modules/home/data/model/input_form_model.dart';
+import '../../modules/home/cubit/home_cubit.dart';
+
+import '../../modules/home/data/model/input_form_model/input_form_model.dart';
 import '../context_utils.dart';
 import '../extensions/theme_extensions.dart';
 import 'default_label.dart';
@@ -33,6 +36,9 @@ class MagicTextField extends StatelessWidget {
           child: TextField(
             cursorColor: theme.white,
             style: theme.textTheme.bodyMedium,
+            onChanged: (value) => context
+                .read<HomeCubit>()
+                .onTextFieldChanged(value: value, field: field),
             keyboardType: inputType,
             decoration: InputDecoration(
               hintText: hint,

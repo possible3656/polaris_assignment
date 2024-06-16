@@ -1,17 +1,13 @@
+import 'dart:async';
+
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
+
+import 'get_storage_service.dart';
 
 class InternetConnectionService {
   void init() {
-    InternetConnection().onStatusChange.listen((InternetStatus status) {
-      switch (status) {
-        case InternetStatus.connected:
-          // The internet is now connected
-          checkForPreviousDataAndUploadIt();
-          break;
-        case InternetStatus.disconnected:
-          // The internet is now disconnected
-          break;
-      }
+    Timer.periodic(const Duration(seconds: 30), (timer) {
+      checkForPreviousDataAndUploadIt(timer);
     });
   }
 
@@ -19,5 +15,9 @@ class InternetConnectionService {
     return await InternetConnection().hasInternetAccess;
   }
 
-  void checkForPreviousDataAndUploadIt() {}
+  Future<void> checkForPreviousDataAndUploadIt(Timer timer) async {
+    if (await isConnected()) {
+      GetStorageService.checkAndUploadPreviousData();
+    }
+  }
 }
