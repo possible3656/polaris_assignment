@@ -6,7 +6,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../modules/home/cubit/home_cubit.dart';
-
 import '../../modules/home/data/model/input_form_model/input_form_model.dart';
 import 'default_label.dart';
 
@@ -78,7 +77,8 @@ class _MagicImageCaptureState extends State<MagicImageCapture> {
 
   Future<void> _captureImage(int index) async {
     final picker = ImagePicker();
-    final pickedFile = await picker.pickImage(source: ImageSource.camera);
+    final pickedFile =
+        await picker.pickImage(source: ImageSource.camera, imageQuality: 25);
 
     if (pickedFile != null) {
       // Get the directory for storing images

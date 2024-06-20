@@ -9,14 +9,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "67.0.0"
-  amazon_cognito_identity_dart_2:
-    dependency: transitive
-    description:
-      name: amazon_cognito_identity_dart_2
-      sha256: "7dba58d7cba61a9d98861d5bfc777a69aa60127e78da3778095213a7e3b1539a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.6.5"
   analyzer:
     dependency: transitive
     description:
@@ -41,14 +33,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
-  aws_s3_upload_lite:
+  aws_s3_api:
     dependency: "direct main"
     description:
-      name: aws_s3_upload_lite
-      sha256: "475b11fc80b8b7c31eedd58a98b5ccd349bdc9c9e2e10893df6178a0e978b48d"
+      name: aws_s3_api
+      sha256: a867c92db27cba79ef6c9f1dd82434a99c8793263233328a6ce158e80d785aff
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.9"
+    version: "2.0.0"
   bloc:
     dependency: transitive
     description:
@@ -909,14 +901,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
-  recase:
-    dependency: transitive
-    description:
-      name: recase
-      sha256: e4eb4ec2dcdee52dcf99cb4ceabaffc631d7424ee55e56f280bc039737f89213
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.1.0"
   recursive_regex:
     dependency: transitive
     description:
@@ -949,6 +933,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.0"
+  shared_aws_api:
+    dependency: transitive
+    description:
+      name: shared_aws_api
+      sha256: "6a6eb57d422d5a4b09c6f65703dd9be90d5a0d7a6fa284762139e5c0dea19136"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.2"
   shared_preferences:
     dependency: transitive
     description:

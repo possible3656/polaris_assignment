@@ -1,3 +1,8 @@
+/// Returns the name of the current function.
+///
+/// This function uses the [StackTrace.current] to get the current stack trace,
+/// and then extracts the name of the current function from the stack trace.
+/// If the name is found, it is returned. Otherwise, it returns 'Name Not Found'.
 String getCurrentFunctionName() {
   final stackTrace = StackTrace.current;
   final frames = stackTrace.toString().split('\n');

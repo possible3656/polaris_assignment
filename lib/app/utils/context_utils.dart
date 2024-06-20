@@ -1,85 +1,18 @@
 import 'package:flutter/material.dart';
 
+/// A utility class for managing context-related operations in a Flutter application.
 abstract class ContextUtils {
   static GlobalKey<NavigatorState> navigationKey = GlobalKey<NavigatorState>();
   static GlobalKey<ScaffoldMessengerState> scaffoldKey =
       GlobalKey<ScaffoldMessengerState>();
 
-  static showLoadingOverlay() {
-    navigationKey.currentState?.overlay?.insert(_loadingOverlay);
-  }
-
-  static hideLoadingOverlay() {
-    _loadingOverlay.remove();
-  }
-
-  static final OverlayEntry _loadingOverlay = OverlayEntry(
-    builder: (context) => Center(
-      child: Container(
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surface.withAlpha(175),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        height: 100,
-        width: 100,
-        child: const Center(
-          child: CircularProgressIndicator(
-            strokeWidth: 2,
-          ),
-        ),
-      ),
-    ),
-  );
-
-  static Future<Object?> showCustomDialog<Object>({
-    required Widget child,
-    bool dismissible = true,
-  }) async {
-    if (navigationKey.currentState?.context == null) {
-      return null;
-    }
-    return showGeneralDialog<Object?>(
-      barrierLabel: 'Loading',
-      barrierDismissible: dismissible,
-      context: navigationKey.currentState!.context,
-      pageBuilder: (context, animation, secondaryAnimation) => Center(
-        child: Material(
-          color: Colors.transparent,
-          child: Container(
-            padding: const EdgeInsets.all(12),
-            margin: const EdgeInsets.symmetric(horizontal: 12),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: Theme.of(context).colorScheme.surface.withAlpha(175),
-            ),
-            child: child,
-          ),
-        ),
-      ),
-    );
-  }
-
-  static Future<Object?> showCustomModalBottomSheet({
-    required Widget child,
-    bool dismissible = true,
-  }) async {
-    if (navigationKey.currentState?.context == null) {
-      return null;
-    }
-
-    return showModalBottomSheet(
-      backgroundColor: Colors.transparent,
-      shape: const BeveledRectangleBorder(),
-      context: navigationKey.currentState!.context,
-      isDismissible: dismissible,
-      barrierLabel: 'showCustomModalBottomSheet',
-      builder: (context) => child,
-    );
-  }
-
+  /// Retrieves the [MediaQueryData] of the current screen.
   static MediaQueryData get mData =>
       MediaQuery.of(navigationKey.currentState!.context);
 
+  /// Shows a toast message at the bottom of the screen.
+  ///
+  /// The [text] parameter specifies the text to be displayed in the toast message.
   static showToast(String? text) {
     if (text == null) return;
     scaffoldKey.currentState?.hideCurrentSnackBar();
@@ -93,7 +26,9 @@ abstract class ContextUtils {
     );
   }
 
+  /// Retrieves the size of the current screen.
   static Size get size => mData.size;
 
+  /// Retrieves the theme data of the current screen.
   static ThemeData get theme => Theme.of(navigationKey.currentState!.context);
 }
